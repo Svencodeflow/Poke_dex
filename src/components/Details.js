@@ -1,30 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Details = () => {
 
-    const [pokemon, setPokemon] = useState([]);
-    const {id} = useParams()
+    let location = useLocation();
+    // console.log(location);
 
-    useEffect(()=>{
-        fetch(`http://pokeapi.co/api/v2/pokemon/1`)
-        .then((res) => res.json())
-        .then(data => 
-            setPokemon([data]))
-    }, [])
-
-    // useEffect(()=>{
-    //     fetch(`http://pokeapi.co/api/v2/ability/1`)
-    //     .then((res) => res.json())
-    //     .then(description => 
-    //         setPokemon([description]))
-    // }, [])
-
-    console.log(pokemon)
-    
+    console.log(location.state[0].name);
 
     return (
-        
 
         <div>
             <style jsx>{`
@@ -68,33 +51,21 @@ const Details = () => {
             `}
             </style>
 
-
-            {pokemon.map((elt, index) => {
-                console.log(elt)
-                return(
-
-                <div key={index} className='home-item'>
-                    <div className='img-card'>
-                    <img className='img' src={elt.sprites.other.dream_world.front_default} alt="" />
-                    </div>
-                    <p className='id'>{elt.id}</p>
-                    <h1>{elt.name.toUpperCase().slice(0, 1)}{elt.name.slice(1)}</h1>
-                    <div className='type'>
-                    <h5>Type:</h5>
-                    <p>{elt.types[0].type.name.toUpperCase().slice(0, 1)}{elt.types[0].type.name.slice(1)}</p>
-                    <p>{elt.types[1].type.name.toUpperCase().slice(0, 1)}{elt.types[1].type.name.slice(1)}</p>
-                    </div>
-                    <p>HP: {elt.stats[0].base_stat}</p>
-                    <p>Attack: {elt.stats[1].base_stat}</p>
-                    <p>Defense: {elt.stats[2].base_stat}</p>
-                    <p>Speed: {elt.stats[5].base_stat}</p>
-                </div>
+            <img src={location.state[0].sprites.other.dream_world.front_default} alt="" />
+            <h2>{location.state[0].name}</h2>
+            <h5>Type:</h5>
+            <p>{location.state[0].types.type}</p>
+            {location.state[0].types.map((elt) => {
+                return (
+                    <p>{elt.type.name}</p>
                 )
             })}
+            <p>HP: {location.state[0].stats[0].base_stat}</p>
+            <p>Attack: {location.state[0].stats[1].base_stat}</p>
+            <p>Defense: {location.state[0].stats[2].base_stat}</p>
+            <p>Speed: {location.state[0].stats[5].base_stat}</p>
         </div>
-
     );
-
 }
 
 export default Details;

@@ -41,3 +41,84 @@
 .home-item {
   border-bottom-left-radius: 30px;
 }
+
+
+
+
+.navbar {
+                    height: 60px;
+                }
+                .logo {
+                    width: 250px;
+                }
+                input {
+                    width: 200px;
+                    height: 30px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    padding: 0 10px;    
+                }
+                .searchbar img {
+                    width: 30px;
+                    position: relative;
+                    top: 8px;
+                    left: 5px;
+                }
+                h1:first-letter {
+                    text-transform: uppercase;
+                }
+                img {
+                    width: 10%;
+                }
+
+
+                .imgPokemon {
+                  width: 20vw;
+                  height: 20vh;
+                  position: relative;
+                  z-index: 0;
+              }
+              .home-item {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  background: linear-gradient(35deg, #FFE1C6 4.87%, #FFCB05 94.37%);
+                  border-radius: 30px;
+                  position: relative;
+                  z-index: 0;
+                  height: 20vh;
+                  width: 25vw;
+              }
+              .home-item::before {
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  height: 24%;
+                  width: 100%;
+                  background-color: white;
+                  border-bottom-left-radius: 30px;
+                  border-bottom-right-radius: 30px;
+                  }
+  
+              .home-item p {
+                  padding-bottom: 30px;
+                  text-decoration: none;
+                  position: relative;
+                  z-index: 1;
+  
+              }
+              a {
+                  text-decoration: none;
+                  color: black;
+              }
+
+
+              html{
+                background-color: #E5E5E5;  
+            }
+            .home {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5%;
+                margin: 10%
+            }

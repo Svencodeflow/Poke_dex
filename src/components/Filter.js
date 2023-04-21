@@ -14,13 +14,11 @@ const Filter = (props) => {
             })
     }, [])
 
-
     let styleButton = {
         textDecoration: 'none',
         backgroundColor: 'yellow',
         padding: '5px 15px',
     }
-
 
     const isObjEmpty = (foundPokemon) => {
         return Object.keys(foundPokemon).length === 0
@@ -44,7 +42,7 @@ const Filter = (props) => {
                         <p>{elt.type.name}</p>
                     )
                 })}
-                <Link style={styleButton}>Show Details</Link>
+                <Link to='/details' style={styleButton}>Show Details</Link>
             </div>
         )
     }
