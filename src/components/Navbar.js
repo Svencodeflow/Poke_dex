@@ -140,7 +140,7 @@ const Navbar = () => {
                     </div>
                 )
             })}
-            {/* {search.map((pokemon) => (
+            {/* {search.map((pokemon)s => (
                 <div key={pokemon.id}>
                     <h1>{pokemon.name}</h1>
                     <img src={pokemon.sprites.other.dream_world.front_default} alt="pokemon" />
