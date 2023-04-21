@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 
 import { Routes, Route } from 'react-router-dom'
 
+
 function App() {
 
 	return (
@@ -20,4 +21,4 @@ function App() {
 	);
 }
 
-export default App;	
+export default App;
