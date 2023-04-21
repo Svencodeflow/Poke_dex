@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 
 import HomeItem from "../components/HomeItem";
@@ -19,6 +20,7 @@ console.log("pokemon", pokemon)
 
     return (
         <div className="home">
+
             <style jsx>{`
             html{
                 background-color: #E5E5E5;  
