@@ -1,6 +1,7 @@
 import './App.css';
 
 //pages&components
+import Home from './pages/Home'
 
 
 function App() {
