@@ -1,10 +1,11 @@
 import './App.css';
 
+//pages&components
 
 
 function App() {
   return (
-    <div className="Apps">
+    <div className="App">
       <Home />
     </div>
   );
