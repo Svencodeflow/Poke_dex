@@ -24,7 +24,7 @@ const Filter = (props) => {
         return Object.keys(foundPokemon).length === 0
     }
 
-    console.log(isObjEmpty(foundPokemon));
+    // console.log(isObjEmpty(foundPokemon));
 
 
     if (isObjEmpty(foundPokemon) === true) {
