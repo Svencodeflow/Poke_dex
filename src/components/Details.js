@@ -1,4 +1,6 @@
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Details = () => {
 
@@ -6,6 +8,19 @@ const Details = () => {
     console.log(location.state);
 
     // console.log(location.state[0].name);
+    const url = location.state[0].species.url;
+    const [description, setDescription] = useState("");
+
+
+    useEffect(() => {
+        fetch(`${url}`)
+            .then(res => res.json())
+            .then(json => {
+                setDescription(json.flavor_text_entries[0].flavor_text)
+            })
+    }, [])
+
+        console.log(description)
 
     return (
 
@@ -38,8 +53,14 @@ const Details = () => {
             <p>Speed:</p><p> {location.state[0].stats[5].base_stat}</p>
             </div>
             </div>
+            <div className='stats'>
+            <p>{description}</p>
+            </div>
         </div>
+
+
     );
+
 }
 
 export default Details;

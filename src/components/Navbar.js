@@ -57,7 +57,7 @@ const Navbar = () => {
     const toggle = () => {
         setLight(!light);
         if (light) {
-            document.body.style.backgroundColor = 'white';
+            document.body.style.backgroundColor = '#E5E5E5';
             document.body.style.color = 'black';
         }
         else {

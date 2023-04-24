@@ -120,7 +120,8 @@ background: linear-gradient(194deg, rgba(254,209,84,1) 0%, rgba(254,209,84,1) 54
   border-radius: 10px;
 }
 .details-container .img-container img {
-  width: 100px;
+  width: 75px;
+  height: 110px;
   margin: -50px 0 0 0;
 }
 .details-container h2 {
@@ -131,10 +132,11 @@ background: linear-gradient(194deg, rgba(254,209,84,1) 0%, rgba(254,209,84,1) 54
 }
 .details-container .type {
   display: flex;
+  margin: 18px;
 }
 .details-container .type p {
-  padding: 0px 15px;
-  margin: 10px 5px;
+  padding: 5px 15px;
+  margin: 10px 5px 20px 5px;
   border: 1px solid black;
   border-radius: 10px;
   text-transform: uppercase;
@@ -143,12 +145,11 @@ background: linear-gradient(194deg, rgba(254,209,84,1) 0%, rgba(254,209,84,1) 54
 .details-container .info {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* width: 95%; */
   margin: 0 20px;
 }
 .details-container .info p {
   padding: 2px 5px;
-  margin: 5px 1px;
+  margin: 3px 1px;
   border-radius: 5px;
   background-color: #1561b3;
   color: rgb(254,209,84);
