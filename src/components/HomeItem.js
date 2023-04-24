@@ -17,7 +17,7 @@ const HomeItem = ({ myUrl, name }) => {
     return (
         <div className="home-item" >
             {single.map((elt) => {
-                console.log(single);
+                // console.log(single);
                 return (
                     <Link to={`/details`} state={single} key={elt.id}>
                         <img className="imgPokemon" src={elt.sprites.other.dream_world.front_default} alt="img" />

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Filter = (props) => {
 
@@ -10,7 +10,6 @@ const Filter = (props) => {
             .then(res => res.json())
             .then(json => {
                 setFoundPokemon(json)
-                console.log(json);
             })
     }, [])
 
@@ -24,9 +23,6 @@ const Filter = (props) => {
         return Object.keys(foundPokemon).length === 0
     }
 
-    // console.log(isObjEmpty(foundPokemon));
-
-
     if (isObjEmpty(foundPokemon) === true) {
         return (
             <div>loading</div>
@@ -35,14 +31,14 @@ const Filter = (props) => {
     else {
         return (
             <div>
-                <img className="imgPokemon" src={foundPokemon.sprites.other.dream_world.front_default} alt="" />
+                <img className='imgPokemon' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
                 <h2>{props.name}</h2>
                 {foundPokemon.types.map((elt) => {
                     return (
                         <p>{elt.type.name}</p>
                     )
                 })}
-                <Link to='/details' style={styleButton}>Show Details</Link>
+                <Link to='/searchdetails' style={styleButton} state={foundPokemon}>Show Details</Link>
             </div>
         )
     }
