@@ -9,31 +9,12 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
-
     const [message, setMessage] = useState('')
-
-    const handleMessage = (e) => {
-        setMessage(e.target.value)
-    }
-
-    // let value = message
-
-    // console.log(value);
-
     const [search, setSearch] = useState([]);
-
-
-    // console.log(search);
-
-    // const something = (event) => {
-    //     if (event.key === 'Enter') {
-    //         value = message
-
-    //     }
-    //     else {
-    //         console.log('error')
-    //     }
-    // }
+    const [light, setLight] = useState(true);
+    const [selectedType, setSelectedType] = useState('');
+    const [pokeType, setPokeType] = useState([]);
+    const [filteredPokemon, setFilteredPokemon] = useState([]);
 
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${message}`)
@@ -42,7 +23,23 @@ const Navbar = () => {
                 setSearch([data]))
     }, [])
 
-    const [light, setLight] = useState(true);
+    // Dropdown Menu
+    useEffect(() => {
+        fetch('https://pokeapi.co/api/v2/type/')
+            .then(res => res.json())
+            .then(json => {
+                setPokeType(json.results)
+            })
+    }, [])
+
+    useEffect(() => {
+        // fetch(`https://pokeapi.co/api/v2/type/${selectedType}`) - doesnt work because value starting with i would give out 0 - but type 0 isnt available 
+        fetch(`${selectedType}`) // instead fetch selectedType which gives beack url of choosen type
+            .then(res => res.json())
+            .then(json => {
+                setFilteredPokemon(json.pokemon)
+            })
+    }, [selectedType])
 
     const toggle = () => {
         setLight(!light);
@@ -55,38 +52,15 @@ const Navbar = () => {
         }
     }
 
-    // Dropdown Menu
-
-    const [pokeType, setPokeType] = useState([]);
-
-    useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/type/')
-            .then(res => res.json())
-            .then(json => {
-                setPokeType(json.results)
-            })
-    }, [])
-
-
-    const [selectedType, setSelectedType] = useState('');
+    const handleMessage = (e) => {
+        setMessage(e.target.value)
+    }
 
     // handleChange gives back event = choosen <option> and sets the selectedType to the value of <option> (elt.url)
 
     const handleChange = (event) => {
         setSelectedType(event.target.value)
     }
-
-    const [filteredPokemon, setFilteredPokemon] = useState([]);
-
-    useEffect(() => {
-        // fetch(`https://pokeapi.co/api/v2/type/${selectedType}`) - doesnt work because value starting with i would give out 0 - but type 0 isnt available 
-        fetch(`${selectedType}`) // instead fetch selectedType which gives beack url of choosen type
-            .then(res => res.json())
-            .then(json => {
-                setFilteredPokemon(json.pokemon)
-            })
-    }, [selectedType])
-
 
     return (
         <nav className="navbar">
@@ -97,12 +71,11 @@ const Navbar = () => {
                     {pokeType.map((elt, i) => {
                         // fix value - type must be equal with value (see elt.url) - 
                         return (
-                            <option key={i} value={elt.url}>{elt.name}</option>
+                            <option key={i} value={elt.url}><Link to={`type/${elt.name}`} state={elt.name}>{elt.name}</Link></option>
                         )
                     })}
                 </select>
-                <Link to="/search">Submit</Link>
-                <Link to="/filter" onClick={handleChange}></Link>
+                <Link to="/searchdetails" state={message}>Submit</Link>
                 <input type="text" onChange={handleMessage} placeholder="Search" />
                 <img src={PokeBall} alt="pokeball" onClick={toggle} />
             </div>

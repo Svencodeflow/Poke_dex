@@ -9,7 +9,7 @@ const Home = () => {
     const [pokemon, setPokemon] = useState([]);
 
     useEffect(() => {
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=20`)
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`)
             .then(res => res.json())
             .then(json => {
                 setPokemon(json.results);
@@ -19,18 +19,20 @@ const Home = () => {
     console.log("pokemon", pokemon)
 
     return (
-        <div className="home">
+        <section>
             <Navbar />
-            {pokemon.map((elt, i) => {
-                return (
-                    <HomeItem
-                        key={i}
-                        name={elt.name}
-                        myUrl={elt.url}
-                    />
-                )
-            })}
-        </div>
+            <div className="home">
+                {pokemon.map((elt) => {
+                    return (
+                        <HomeItem
+                            key={elt.name}
+                            name={elt.name}
+                            myUrl={elt.url}
+                        />
+                    )
+                })}
+            </div>
+        </section>
     );
 }
 
