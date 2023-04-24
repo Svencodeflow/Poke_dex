@@ -1,7 +1,6 @@
+import { useState, useEffect } from 'react';
 
-import { useState, useEffect } from "react";
-
-import HomeItem from "../components/HomeItem";
+import HomeItem from '../components/HomeItem';
 import Navbar from '../components/Navbar'
 
 const Home = () => {
@@ -16,12 +15,10 @@ const Home = () => {
             })
     }, [])
 
-    console.log("pokemon", pokemon)
-
     return (
         <section>
             <Navbar />
-            <div className="home">
+            <div className='home'>
                 {pokemon.map((elt) => {
                     return (
                         <HomeItem
