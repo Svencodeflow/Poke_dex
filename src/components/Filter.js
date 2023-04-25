@@ -30,6 +30,7 @@ const Filter = (props) => {
     }
     else {
         return (
+
             <div className='filter'>
                 <div className='filter-item'>
                 <img className='imgPokemon_showDetails' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
