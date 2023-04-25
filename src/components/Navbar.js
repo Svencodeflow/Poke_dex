@@ -60,10 +60,13 @@ const Navbar = () => {
         if (light) {
             document.body.style.backgroundColor = '#E5E5E5';
             document.body.style.color = 'black';
+            // document.body.style.height = '100vh';
+
         }
         else {
             document.body.style.backgroundColor = 'grey';
             document.body.style.color = 'white';
+            document.body.style.height = 'max-content';
         }
     }
 

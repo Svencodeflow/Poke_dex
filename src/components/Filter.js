@@ -11,7 +11,7 @@ const Filter = (props) => {
             .then(json => {
                 setFoundPokemon(json)
             })
-    }, [])
+    }, [props.name])
 
     // let styleButton = {
     //     textDecoration: 'none',
@@ -33,16 +33,16 @@ const Filter = (props) => {
 
             <div className='filter'>
                 <div className='filter-item'>
-                <img className='imgPokemon_showDetails' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
-                <h2 className='name_showDetails'>{props.name.slice(0,1).toUpperCase() + props.name.slice(1)}</h2>
-                {foundPokemon.types.map((elt) => {
-                    return (
-                        <div className='types_filter'>
-                        <p className='type_showDetails'>{elt.type.name.slice(0,1).toUpperCase() + elt.type.name.slice(1)}</p>
-                        </div>
-                    )
-                })}
-                <Link to='/searchdetails' state={foundPokemon} className='showDetails_btn' >Show Details</Link>
+                    <img className='imgPokemon_showDetails' src={foundPokemon.sprites.other.dream_world.front_default} alt='Pokemon' />
+                    <h2 className='name_showDetails'>{props.name.slice(0, 1).toUpperCase() + props.name.slice(1)}</h2>
+                    {foundPokemon.types.map((elt) => {
+                        return (
+                            <div className='types_filter'>
+                                <p className='type_showDetails'>{elt.type.name.slice(0, 1).toUpperCase() + elt.type.name.slice(1)}</p>
+                            </div>
+                        )
+                    })}
+                    <Link to='/searchdetails' state={foundPokemon} className='showDetails_btn' >Show Details</Link>
                 </div>
             </div>
         )
