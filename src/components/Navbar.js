@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import PokeBall from '../images/pokeball.png';
 import Filter from './Filter';
+import EmptyComponent from './EmptyComponent';
 
 const Navbar = () => {
 
@@ -24,7 +25,7 @@ const Navbar = () => {
                 setSearch([data]))
     }, [message])
 
-    console.log(search);
+
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -34,8 +35,8 @@ const Navbar = () => {
                     setSearch([data]))
         }
     }
-    console.log(message);
-    console.log(search);
+    // console.log(message);
+    // console.log(search);
 
     // Dropdown Menu
     useEffect(() => {
@@ -53,6 +54,8 @@ const Navbar = () => {
                 setFilteredPokemon(json.pokemon)
             })
     }, [selectedType])
+
+    console.log(filteredPokemon);
 
     const toggle = () => {
         setLight(!light);
@@ -98,6 +101,9 @@ const Navbar = () => {
                     </div>
                 )
             })}
+            {(selectedType.length !== 0 && filteredPokemon.length === 0) && (
+                <EmptyComponent />
+            )}
         </nav>
     );
 }

@@ -42,6 +42,29 @@ const Filter = (props) => {
             </div>
         )
     }
+    // const isObjEmpty = (foundPokemon) => {
+    //     return Object.keys(foundPokemon).length === 0
+    // }
+
+    // if (isObjEmpty(foundPokemon) === true) {
+    //     return (
+    //         <div>loading</div>
+    //     )
+    // }
+    // else {
+    //     return (
+    //         <div>
+    //             <img className='imgPokemon' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
+    //             <h2>{props.name}</h2>
+    //             {foundPokemon.types.map((elt) => {
+    //                 return (
+    //                     <p>{elt.type.name}</p>
+    //                 )
+    //             })}
+    //             <Link to='/searchdetails' style={styleButton} state={foundPokemon}>Show Details</Link>
+    //         </div>
+    //     )
+    // }
 }
 
 export default Filter;
