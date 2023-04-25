@@ -73,8 +73,8 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <div className='searchbar'>
-                <select name='type' id='' onChange={handleChange}>
-                    <option></option>
+                <select className='select' name='type' id='' onChange={handleChange}>
+                    <option>Select Type</option>
                     {pokeType.map((elt, i) => {
                         return (
                             <option key={i} value={elt.url}>{elt.name}</option>
@@ -82,8 +82,8 @@ const Navbar = () => {
                         )
                     })}
                 </select>
-                <Link to='/search' state={search}>Submit</Link>
-                <input type='text' onChange={handleMessage} placeholder="Search" onKeyDown={handleKeyDown} state={search} />
+                <input className='inputText' type='text' onChange={handleMessage} placeholder="Search" onKeyDown={handleKeyDown} state={search} />
+                <Link to='/search' state={search} className='submit' >Submit</Link>
                 {/* <input type="text" onChange={handleMessage} placeholder="Search" state={search} /> */}
                 <img src={PokeBall} alt='pokeball' onClick={toggle} />
             </div>

@@ -23,6 +23,7 @@ import dark from '../images/icons/dark.png'
 const Details = () => {
 
     let location = useLocation();
+    // console.log(location)
 
     const url = location.state[0].species.url;
     const [description, setDescription] = useState("");
@@ -33,7 +34,7 @@ const Details = () => {
         fetch(`${url}`)
             .then(res => res.json())
             .then(json => {
-                setDescription(json.flavor_text_entries[25].flavor_text);
+                setDescription(json.flavor_text_entries[1].flavor_text);
                 setNameGer(json.names[7].name);
 
             })
@@ -45,9 +46,9 @@ const Details = () => {
 
         <div className='details-container'>
             <div className='img-container'>
-            <img src={location.state[0].sprites.other.dream_world.front_default} alt="" />
+            <img className='imgPokemon_details' src={location.state[0].sprites.other.dream_world.front_default} alt="" />
             </div>
-            <h2>{nameGER}</h2>
+            <h2 className='details_name'>{location.state[0].name}</h2>
             <div className='type'>
             {location.state[0].types.map(type => {
                 if (type.type.name === 'normal') {
@@ -133,22 +134,23 @@ const Details = () => {
                 }
             })}
             </div>
+            
             <div className='info'>
             <div className='stats'>
-            <p>KP:</p><p> {location.state[0].stats[0].base_stat}</p>
+            <p>HP:</p><p> {location.state[0].stats[0].base_stat}</p>
             </div>
             <div className='stats'>
-            <p>Attacke:</p><p> {location.state[0].stats[1].base_stat}</p>
+            <p>Attack:</p><p> {location.state[0].stats[1].base_stat}</p>
             </div>
             <div className='stats'>
-            <p >Verteidigung:</p><p> {location.state[0].stats[2].base_stat}</p>
+            <p >Defense:</p><p> {location.state[0].stats[2].base_stat}</p>
             </div>
             <div className='stats'>
             <p>Speed:</p><p> {location.state[0].stats[5].base_stat}</p>
             </div>
             </div>
             <div className='description'>
-            <p className='description-p'>{description}</p>
+            <p className='description-p'>"{description}"</p>
             </div>
         </div>
 

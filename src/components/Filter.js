@@ -13,11 +13,11 @@ const Filter = (props) => {
             })
     }, [])
 
-    let styleButton = {
-        textDecoration: 'none',
-        backgroundColor: 'yellow',
-        padding: '5px 15px',
-    }
+    // let styleButton = {
+    //     textDecoration: 'none',
+    //     backgroundColor: 'yellow',
+    //     padding: '5px 15px',
+    // }
 
     const isObjEmpty = (foundPokemon) => {
         return Object.keys(foundPokemon).length === 0
@@ -25,20 +25,24 @@ const Filter = (props) => {
 
     if (isObjEmpty(foundPokemon) === true) {
         return (
-            <div>loading</div>
+            <div></div>
         )
     }
     else {
         return (
-            <div>
-                <img className='imgPokemon' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
-                <h2>{props.name}</h2>
+            <div className='filter'>
+                <div className='filter-item'>
+                <img className='imgPokemon_showDetails' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
+                <h2 className='name_showDetails'>{props.name.slice(0,1).toUpperCase() + props.name.slice(1)}</h2>
                 {foundPokemon.types.map((elt) => {
                     return (
-                        <p>{elt.type.name}</p>
+                        <div className='types_filter'>
+                        <p className='type_showDetails'>{elt.type.name.slice(0,1).toUpperCase() + elt.type.name.slice(1)}</p>
+                        </div>
                     )
                 })}
-                <Link to='/searchdetails' style={styleButton} state={foundPokemon}>Show Details</Link>
+                <Link to='/searchdetails' state={foundPokemon} className='showDetails_btn' >Show Details</Link>
+                </div>
             </div>
         )
     }
