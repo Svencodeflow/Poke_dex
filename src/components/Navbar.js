@@ -14,9 +14,11 @@ const Navbar = () => {
     const [pokeType, setPokeType] = useState([]);
     const [filteredPokemon, setFilteredPokemon] = useState([]);
 
+
     const handleMessage = (e) => {
         setMessage(e.target.value)
     }
+
 
     useEffect(() => {
         fetch(`https://pokeapi.co/api/v2/pokemon/${message}`)
@@ -24,7 +26,6 @@ const Navbar = () => {
             .then(data =>
                 setSearch([data]))
     }, [message])
-
 
 
     const handleKeyDown = (e) => {
@@ -35,8 +36,6 @@ const Navbar = () => {
                     setSearch([data]))
         }
     }
-    // console.log(message);
-    // console.log(search);
 
     // Dropdown Menu
     useEffect(() => {
@@ -55,7 +54,6 @@ const Navbar = () => {
             })
     }, [selectedType])
 
-    console.log(filteredPokemon);
 
     const toggle = () => {
         setLight(!light);
@@ -81,13 +79,11 @@ const Navbar = () => {
                     {pokeType.map((elt, i) => {
                         return (
                             <option key={i} value={elt.url}>{elt.name}</option>
-                            // <option key={i} value={elt.url}><Link to={`type/${elt.name}`} state={elt.name}>{elt.name}</Link></option>
                         )
                     })}
                 </select>
                 <Link to='/search' state={search}>Submit</Link>
-                <input type='text' onChange={handleMessage} placeholder="Search" onKeyDown={handleKeyDown} state={search} />
-                {/* <input type="text" onChange={handleMessage} placeholder="Search" state={search} /> */}
+                <input type='text' onChange={handleMessage} placeholder="Search-please consider lowercase" onKeyDown={handleKeyDown} state={search} />
                 <img src={PokeBall} alt='pokeball' onClick={toggle} />
             </div>
             {filteredPokemon.map((elt, j) => {
@@ -109,23 +105,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
-
-            // <div key={pokemon.id}>
-            //         <h1>{pokemon.name}</h1>
-            //         <img src={pokemon.sprites.other.dream_world.front_default} alt="pokemon" />
-            //         <div>
-            //             <h2>Stats</h2>
-            //             <ul>
-            //                 {pokemon.stats.map((stats) => (
-            //                     <p key={stats.stat.name}>{stats.stat.name}: {stats.base_stat}</p>
-            //                 ))}
-            //             </ul>
-            //             <h2>Type</h2>
-            //             <ul>
-            //                 {pokemon.types.map((types) => (
-            //                     <p key={types.type.name}>{types.type.name}</p>
-            //                 ))}
-            //             </ul>
-            //         </div>
-            //     </div>
