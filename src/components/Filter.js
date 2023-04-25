@@ -31,7 +31,7 @@ const Filter = (props) => {
     else {
         return (
             <div>
-                <img className='imgPokemon' src={foundPokemon.sprites.other.dream_world.front_default} alt='image of Pokemon' />
+                <img className='imgPokemon' src={foundPokemon.sprites.other.dream_world.front_default === null ? foundPokemon.sprites.front_default : foundPokemon.sprites.other.dream_world.front_default} alt='of Pokemon' />
                 <h2>{props.name}</h2>
                 {foundPokemon.types.map((elt) => {
                     return (
