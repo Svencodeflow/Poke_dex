@@ -3,7 +3,7 @@ import unknown from '../images/icons/unknown.png'
 
 const EmptyComponent = () => {
     return (
-        <div className='details-container'>
+        <div className='details-container widh'>
             <div className='img-container'>
                 <img src={pokemon} alt="" />
             </div>
